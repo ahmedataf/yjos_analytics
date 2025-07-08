@@ -52,15 +52,63 @@ st.markdown("""
     border-left-color: #17a2b8;
     background: linear-gradient(135deg, #f8fdff 0%, #e2f3f5 100%);
 }
+
+/* FIX METRIC TEXT VISIBILITY */
 .stMetric {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: white !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stMetric > div {
+    background: white !important;
+}
+
+.stMetric label {
+    color: #333333 !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+}
+
+.stMetric [data-testid="metric-container"] > div {
+    background: white !important;
+}
+
+.stMetric [data-testid="metric-container"] > div > div {
+    color: #1f2937 !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+}
+
+.stMetric [data-testid="metric-container"] > div > div:nth-child(2) {
+    color: #059669 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+/* Force dark text on all metric elements */
+div[data-testid="metric-container"] * {
+    color: #1f2937 !important;
+}
+
+div[data-testid="metric-container"] div:first-child {
+    color: #374151 !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="metric-container"] div:nth-child(2) {
+    color: #111827 !important;
+    font-weight: 700 !important;
+    font-size: 1.75rem !important;
+}
+
+div[data-testid="metric-container"] div:last-child {
+    color: #059669 !important;
+    font-weight: 500 !important;
 }
 </style>
 """, unsafe_allow_html=True)
-
 def main():
     # Header
     st.markdown("""
