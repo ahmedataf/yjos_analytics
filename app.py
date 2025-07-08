@@ -107,7 +107,10 @@ def display_dashboard(data, show_detailed_breakdown, show_equipment_analysis, sh
     """Display the main dashboard with all analytics"""
     
     # Job Summary Section
+    
     st.header("📋 Job Summary")
+    st.write("Debug - Job Info:", job_info)  # Temporary debug line
+
     job_info = data['job_summary']
     
     col1, col2, col3, col4 = st.columns(4)
