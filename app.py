@@ -134,7 +134,6 @@ def display_dashboard(data, show_detailed_breakdown, show_equipment_analysis, sh
     # Job Summary Section
     st.header("📋 Job Summary")
     job_info = data.get('job_summary', {})
-    st.write("DEBUG - Extracted data:", job_info)  # Add this line temporarily
     
     # Use native Streamlit metrics for better reliability
     col1, col2, col3, col4 = st.columns(4)
