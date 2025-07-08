@@ -285,21 +285,26 @@ def display_dashboard(data, show_detailed_breakdown, show_equipment_analysis, sh
             )
             st.plotly_chart(fig_performance, use_container_width=True)
         
-        # Equipment Details Table
+        # Equipment Details Table - FIXED VERSION
         st.subheader("🔍 Equipment Details")
         
-        # Style the dataframe
-        eq_styled = eq_df.style.format({
-            'Success Rate': '{:.0f}%',
-            'Avg Deployment Time': '{:.1f}h'
-        }).background_gradient(
-            subset=['Success Rate'], 
-            cmap='RdYlGn', 
-            vmin=0, 
-            vmax=100
-        )
+        # Create a color-coded display without matplotlib dependency
+        eq_display = eq_df.copy()
         
-        st.dataframe(eq_styled, use_container_width=True)
+        # Add color indicators based on success rate
+        def get_status_emoji(success_rate):
+            if success_rate >= 90:
+                return "🟢 Excellent"
+            elif success_rate >= 70:
+                return "🟡 Good"
+            else:
+                return "🔴 Needs Attention"
+        
+        eq_display['Status'] = eq_display['Success Rate'].apply(get_status_emoji)
+        eq_display['Success Rate'] = eq_display['Success Rate'].apply(lambda x: f"{x:.0f}%")
+        eq_display['Avg Deployment Time'] = eq_display['Avg Deployment Time'].apply(lambda x: f"{x:.1f}h")
+        
+        st.dataframe(eq_display, use_container_width=True)
     
     # Detailed Daily Breakdown
     if show_detailed_breakdown:
