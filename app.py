@@ -583,8 +583,7 @@ def display_dashboard(data, show_drilling_performance, show_detailed_breakdown, 
                     x='Day',
                     y='Equipment',
                     title='Equipment Usage Schedule',
-                    color_continuous_scale='Blues',
-                    aspect='auto'
+                    color_continuous_scale='Blues'
                 )
                 st.plotly_chart(fig_eq_schedule, use_container_width=True)
                 
